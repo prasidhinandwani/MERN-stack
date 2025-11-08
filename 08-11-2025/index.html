@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.class1 {
+  border: 5px dotted black;
+  margin-top: 100px;
+  margin-bottom: 5px;
+  margin-right: 450px;
+  margin-left: 800px;
+  background-color: lightgreen;
+}
+</style>
+</head>
+<body>
+<center><h2>Using individual margin properties</h2>
+</center>
+
+<div class="class1">This div element has a top margin of 100px, a right margin of 150px, a bottom margin of 100px, and a left margin of 80px.</div>
+<div>This div element has a top margin of 100px, a right margin of 150px, a bottom margin of 100px, and a left margin of 80px.</div>
+<div>{
+  border: 1px solid black;
+  margin: 25px 50px 75px 100px;
+  background-color: lightblue;
+}</div> 
+
+
+
+</body>
+
+<style>
+    /* One single rule that does everything */
+    div {
+      width: 300px;
+      margin: 25px auto;           /* top/bottom 25px, left/right auto → centered */
+      padding: 20px;               /* optional: inner space */
+      border: 1px solid red;       /* red outer border */
+      box-sizing: border-box;      /* makes width include border */
+      
+      /* inner “content” box */
+      background-color: lightblue;
+    }
+
+    .box2 {
+      margin: 25px 50px 75px 100px;   /* top right bottom left */
+      border: 1px solid black;
+      background-color: lightyellow;
+    }
+   </style> 
+</html>
