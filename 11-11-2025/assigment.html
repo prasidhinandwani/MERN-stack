@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techycorp Solutions</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f6fbff;
+      color: #1a354b;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(52, 152, 219, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #19a2e7;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .navbar-menu a {
+      color: #1a354b;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.08rem;
+      transition: color 0.2s;
+    }
+    .navbar-menu a.active,
+    .navbar-menu a:hover {
+      color: #19a2e7;
+    }
+    .navbar-cta {
+      background: #19a2e7;
+      color: #fff;
+      padding: 9px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.08rem;
+      text-decoration: none;
+      margin-left: 20px;
+      transition: background 0.2s;
+    }
+    .navbar-cta:hover {
+      background: #126aa7;
+    }
+
+    .services-section {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 52px 8vw 24px;
+      margin-bottom: 40px;
+    }
+    .service-card {
+      background: #e7f7fc;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(52, 152, 219, 0.13);
+      flex: 1;
+      padding: 40px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.25s, background 0.25s, border-color 0.25s, color 0.25s;
+      min-width: 210px;
+      max-width: 400px;
+      min-height: 280px;
+      text-align: center;
+      border: 2px solid #d1eeff;
+      cursor: pointer;
+    }
+    .service-icon {
+      font-size: 2.9rem;
+      margin-bottom: 24px;
+      color: #19a2e7;
+      transition: color 0.25s;
+    }
+    .service-card h2 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 14px;
+      color: #184368;
+      transition: color 0.25s;
+    }
+    .service-card p {
+      font-size: 1.03rem;
+      color: #3878ab;
+      line-height: 1.5;
+      transition: color 0.25s;
+    }
+    /* HOVER - TURN CARD BLUE */
+    .service-card:hover {
+      background: #19a2e7;
+      color: #fff;
+      border-color: #19a2e7;
+    }
+    .service-card:hover .service-icon {
+      color: #fff;
+    }
+    .service-card:hover h2,
+    .service-card:hover p {
+      color: #fff;
+    }
+
+    .courses-section {
+      padding: 16px 8vw 64px;
+    }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .course-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.16);
+      position: relative;
+      background: #fff;
+      display: flex;
+      align-items: flex-end;
+      font-size: 1.08rem;
+    }
+    .course-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .course-label {
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%;
+      background: rgba(25, 162, 231, 0.95);
+      color: #fff;
+      padding: 12px 16px 10px 20px;
+      font-size: 1.04rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: 0.2px;
+    }
+    .course-hrs {
+      font-size: 0.97rem;
+      font-weight: 400;
+      margin-left: 16px;
+      color: #eef6fc;
+    }
+
+    @media (max-width: 1100px) {
+      .services-section { flex-direction: column; gap: 26px; padding: 42px 3vw 22px; }
+      .courses-section { padding: 10px 3vw 38px; }
+    }
+    @media (max-width: 900px) {
+      .courses-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 220px);}
+      .service-card { min-width: unset; max-width: unset; }
+    }
+    @media (max-width: 600px) {
+      .navbar { flex-direction: column; gap: 10px; padding: 10px 20px;}
+      .navbar-logo { font-size: 1.25rem; }
+      .services-section { padding: 20px 1vw 10px; }
+      .service-card { font-size: 0.9rem; padding: 18px 9px;}
+      .courses-section { padding: 0 1vw 20px; }
+      .courses-grid { gap: 12px;}
+      .course-label { font-size: 0.88rem; padding: 8px 10px 8px 12px;}
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="navbar-logo">
+      <i class="fas fa-book"></i> Techycorp Solutions
+    </div>
+    <div class="navbar-menu">
+      <a class="active" href="#">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">COURSES</a>
+      <a href="#">PAGES</a>
+      <a href="#">CONTACT</a>
+      <a class="navbar-cta" href="#">Join Now &rarr;</a>
+    </div>
+  </div>
+
+  <!-- SERVICE CARDS -->
+  <section class="services-section">
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+      <h2>Skilled Instructors</h2>
+      <p>We take pride in delivering top-notch corporate training solutions, backed by over 10 years of industry expertise. Our experienced trainers specialize in a diverse range of programs, ensuring comprehensive skill development for professionals.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-globe"></i></div>
+      <h2>Our Services</h2>
+      <p>Corporate Training: Tailored programs designed for 10+ years of experienced professionals, focusing on cutting-edge industry trends. We collaborate with reputed colleges to provide specialized training, enhancing job market readiness.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-home"></i></div>
+      <h2>Why Choose Us</h2>
+      <p>Proven Track Record: Over a decade of successful delivery. Industry-Expert Trainers bring real-world experience to every program. Placement oriented approach and strong results across various colleges.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><i class="fas fa-book-open"></i></div>
+      <h2>Scholarship Facility</h2>
+      <p>Our scholarship programs support talented learners, making courses more accessible for a diverse range of individuals. For eligibility criteria and details, contact our admissions office.</p>
+    </div>
+  </section>
+
+  <!-- COURSE GRID WITH IMAGES AND LABELS -->
+  <section class="courses-section">
+    <div class="courses-grid">
+      <div class="course-card">
+        <img src="4.jpg" alt="Java Full Stack">
+        <div class="course-label">
+          Java Full Stack
+          <span class="course-hrs">360 Hrs</span>
+        </div>
+      </div>
+      <div class="course-card">
+        <img src="1.png" alt="Cloud Solution Architect">
+        <div class="course-label">
+          Cloud Solution Architect
+          <span class="course-hrs">260 Hrs</span>
+        </div>
+      </div>
+      <div class="course-card">
+        <img src="2.jpg" alt="Web Development & Design">
+        <div class="course-label">
+          Web Development & Design
+          <span class="course-hrs">320 Hrs</span>
+        </div>
+      </div>
+      <div class="course-card">
+        <img src="3.png" alt="Data Analytics">
+        <div class="course-label">
+          Data Analytics
+          <span class="course-hrs">380 Hrs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
