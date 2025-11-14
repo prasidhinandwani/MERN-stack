@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Status Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input[type="number"] {
+            padding: 5px;
+            width: 100px;
+        }
+        button {
+            padding: 5px 15px;
+            margin-left: 10px;
+        }
+        #result {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .positive { color: green; }
+        .negative { color: red; }
+        .zero     { color: blue; }
+    </style>
+</head>
+<body>
+
+    <h2>Number Status Checker</h2>
+
+    Enter a Number: <input type="number" id="num" value="-56">
+    <button onclick="check()">Check Status</button>
+
+    <h3>Status:</h3>
+    <p id="result">The number is "**NEGATIVE**".</p>
+
+    <script>
+        function check() {
+            let n = document.getElementById('num').value;
+            let res = document.getElementById('result');
+            
+            res.className = '';
+
+            if (n === "" || isNaN(n)) {
+                res.textContent = 'Please enter a valid number.';
+                res.style.color = 'black';
+            } else if (n > 0) {
+                res.innerHTML = `The number is "<span class="positive">POSITIVE</span>".`;
+            } else if (n < 0) {
+                res.innerHTML = `The number is "<span class="negative">NEGATIVE</span>".`;
+            } else {
+                res.innerHTML = `The number is "<span class="zero">ZERO</span>".`;
+            }
+        }
+
+        window.onload = check;
+    </script>
+
+</body>
+</html>

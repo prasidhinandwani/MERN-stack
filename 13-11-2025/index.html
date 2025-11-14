@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Calculator</title>
+</head>
+<body>
+
+    <h3>Calculator (a = 10, b = 10)</h3>
+
+    <button onclick="add()">Addition</button>
+    <button onclick="subtract()">Subtraction</button>
+    <button onclick="multiply()">Multiplication</button>
+    <button onclick="divide()">Division</button>
+
+    <p id="result"></p>
+
+    <script>
+        let a = 10;
+        let b = 10;
+        let output = document.getElementById("result");
+
+        function add() {
+            let res = a + b;
+            console.log("Addition:", res);
+            output.innerHTML += "Addition: " + res + "<br>";
+        }
+
+        function subtract() {
+            let res = a - b;
+            console.log("Subtraction:", res);
+            output.innerHTML += "Subtraction: " + res + "<br>";
+        }
+
+        function multiply() {
+            let res = a * b;
+            console.log("Multiplication:", res);
+            output.innerHTML += "Multiplication: " + res + "<br>";
+        }
+
+        function divide() {
+            let res = b !== 0 ? (a / b) : "Error: Divide by zero";
+            console.log("Division:", res);
+            output.innerHTML += "Division: " + res + "<br>";
+        }
+    </script>
+
+</body>
+</html>

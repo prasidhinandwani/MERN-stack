@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input[type="number"] {
+            padding: 5px;
+            width: 80px;
+            margin: 0 5px;
+        }
+        button {
+            padding: 5px 12px;
+            margin: 0 3px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Basic Arithmetic Calculator</h2>
+
+    <input type="number" id="num1" value="10"> 
+    <select id="operator">
+        <option value="+">Add</option>
+        <option value="-">Subtract</option>
+        <option value="*">Multiply</option>
+        <option value="/">Divide</option>
+    </select>
+    <input type="number" id="num2" value="5">
+
+    <br><br>
+    <button onclick="calculate()">Calculate</button>
+
+    <h3>Result:</h3>
+    <p id="result">Click "Calculate" to see the answer.</p>
+
+    <script>
+        function calculate() {
+            let a = parseFloat(document.getElementById('num1').value);
+            let b = parseFloat(document.getElementById('num2').value);
+            let op = document.getElementById('operator').value;
+            let res = document.getElementById('result');
+
+            res.className = '';
+
+            if (isNaN(a) || isNaN(b)) {
+                res.textContent = 'Please enter valid numbers.';
+                res.className = 'error';
+                return;
+            }
+
+            let answer;
+            if (op === '+') answer = a + b;
+            else if (op === '-') answer = a - b;
+            else if (op === '*') answer = a * b;
+            else if (op === '/') {
+                if (b === 0) {
+                    res.textContent = 'Cannot divide by zero!';
+                    res.className = 'error';
+                    return;
+                }
+                answer = a / b;
+            }
+
+            res.textContent = answer;
+        }
+    </script>
+
+</body>
+</html>
