@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>CSS Box Model Demonstration</h1>
+    
+    <div class="box-model-container">
+        <div class="box-model-example">
+            <div class="content">Content</div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <h3>Margin (supports negative)</h3>
+        <div class="control-group">
+            <label for="margin-top">Top:</label>
+            <input type="range" id="margin-top" min="-200" max="500" value="20">
+            <span id="margin-top-value">20px</span>
+        </div>
+        <div class="control-group">
+            <label for="margin-right">Right:</label>
+            <input type="range" id="margin-right" min="-200" max="500" value="20">
+            <span id="margin-right-value">20px</span>
+        </div>
+        <div class="control-group">
+            <label for="margin-bottom">Bottom:</label>
+            <input type="range" id="margin-bottom" min="-200" max="500" value="20">
+            <span id="margin-bottom-value">20px</span>
+        </div>
+        <div class="control-group">
+            <label for="margin-left">Left:</label>
+            <input type="range" id="margin-left" min="-200" max="500" value="20">
+            <span id="margin-left-value">20px</span>
+        </div>
+
+        <h3>Border Width</h3>
+        <div class="control-group">
+            <label for="border">All Sides:</label>
+            <input type="range" id="border" min="0" max="100" value="5">
+            <span id="border-value">5px</span>
+        </div>
+
+        <h3>Padding</h3>
+        <div class="control-group">
+            <label for="padding">All Sides:</label>
+            <input type="range" id="padding" min="0" max="100" value="30">
+            <span id="padding-value">30px</span>
+        </div>
+    </div>
+    
+    <div class="box-model-explanation">
+        <h2>Box Model Components</h2>
+        <div class="component">
+            <div class="color-box margin"></div>
+            <p><strong>Margin</strong> - Space outside the border (transparent, can be negative)</p>
+        </div>
+        <div class="component">
+            <div class="color-box border"></div>
+            <p><strong>Border</strong> - Surrounds the padding and content</p>
+        </div>
+        <div class="component">
+            <div class="color-box padding"></div>
+            <p><strong>Padding</strong> - Space between border and content</p>
+        </div>
+        <div class="component">
+            <div class="color-box content-color"></div>
+            <p><strong>Content</strong> - Actual content of the box</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

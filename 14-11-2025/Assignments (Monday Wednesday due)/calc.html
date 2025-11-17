@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+    body{display:flex;justify-content:center;align-items:center;height:100vh;background:#f0f0f0}
+    .calc{background:#fff;padding:20px;border-radius:12px;width:300px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+    #out{background:#eee;color:#000;font-size:2rem;text-align:right;padding:15px;margin-bottom:10px;border-radius:8px;min-height:60px;word-break:break-all}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+    button{background:#ddd;color:#000;border:none;font-size:1.3rem;padding:16px;border-radius:8px;cursor:pointer;transition:.1s}
+    button:hover{background:#ccc}
+    button:active{transform:scale(.97)}
+    .eq{background:#4a90e2;color:#fff;grid-column:span 2}
+    .eq:hover{background:#357abd}
+    .clr{background:#e74c3c;color:#fff}
+    .clr:hover{background:#c0392b}
+    .op{background:#aaa;color:#000}
+    .op:hover{background:#999}
+  </style>
+</head>
+<body>
+
+<div class="calc">
+  <div id="out">0</div>
+  <div class="grid">
+    <button class="clr" onclick="clr()">C</button>
+    <button class="op" onclick="add('%')">%</button>
+    <button class="op" onclick="add('/')">÷</button>
+    <button class="op" onclick="add('*')">×</button>
+
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button class="op" onclick="add('-')">−</button>
+
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button class="op" onclick="add('+')">+</button>
+
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button class="eq" onclick="eq()">=</button>
+
+    <button onclick="add('0')" style="grid-column:span 2">0</button>
+    <button onclick="add('.')">.</button>
+  </div>
+</div>
+
+<script>
+  let d = document.getElementById('out');
+  let s = '0';
+  let r = false;
+
+  function upd() { d.innerText = s; }
+
+  function add(v) {
+    if (r) { s = '0'; r = false; }
+    s = (s === '0' && v !== '.') ? v : s + v;
+    upd();
+  }
+
+  function clr() {
+    s = '0'; r = false; upd();
+  }
+
+  function eq() {
+    try {
+      let e = s.replace(/×/g,'*').replace(/÷/g,'/');
+      if (s.includes('%')) {
+        let p = s.split(/[\+\-×÷]/g);
+        let o = s.match(/[\+\-×÷]/g) || [];
+        let t = parseFloat(p[0]);
+        for (let i = 0; i < o.length; i++) {
+          let n = parseFloat(p[i+1]);
+          if (p[i+1].includes('%')) n = t * (n/100);
+          if (o[i]=='+') t += n;
+          else if (o[i]=='-') t -= n;
+          else if (o[i]=='*') t *= n;
+          else if (o[i]=='/') t /= n;
+        }
+        s = (t%1===0) ? ''+t : t.toFixed(6).replace(/\.?0+$/,'');
+      } else {
+        let res = eval(e);
+        s = (res%1===0) ? ''+res : res.toFixed(6).replace(/\.?0+$/,'');
+      }
+      r = true;
+    } catch {
+      s = 'Error'; r = true;
+    }
+    upd();
+  }
+
+  document.onkeydown = function(k) {
+    let c = k.key;
+    if (c>='0'&&c<='9') add(c);
+    else if (c==='.') add('.');
+    else if (c==='+'||c==='-'||c==='*'||c==='/') add(c);
+    else if (c==='%') add('%');
+    else if (c==='Enter'||c==='=') eq();
+    else if (c==='Escape'||c==='c') clr();
+  };
+</script>
+
+</body>
+</html>
