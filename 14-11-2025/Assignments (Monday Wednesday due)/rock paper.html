@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rock Paper Scissor</title>
+<style>
+  body,html{margin:0;height:100%;font-family:Arial,sans-serif;background:#f0f0f0}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:30px 15px}
+  h1{font-size:48px;margin:20px}
+  .hand{border:4px solid #000;background:#fff;width:130px;height:130px;border-radius:20px;font-size:70px;display:flex;align-items:center;justify-content:center}
+  .row{display:flex;gap:40px}
+  .score{font-size:40px;font-weight:bold;margin:20px}
+  .msg{font-size:28px;text-align:center;min-height:80px}
+  .opts{display:flex;gap:30px;flex-wrap:wrap;justify-content:center}
+  .btn{background:#fff;border:4px solid #000;border-radius:18px;padding:20px 40px;font-size:34px;cursor:pointer;min-width:180px;transition:.2s}
+  .btn:hover{background:#ddd;transform:scale(1.1)}
+  .rst{margin:30px auto;padding:16px 50px;font-size:24px;background:#000;color:#fff;border:none;border-radius:12px;cursor:pointer}
+  .rst:hover{background:#333}
+</style>
+</head>
+<body>
+
+<h1>Rock Paper Scissors</h1>
+
+<div class="row">
+  <div class="hand" id="p">R</div>
+  <div class="hand" id="c">R</div>
+</div>
+
+<div class="score" id="s">0 : 0</div>
+<div class="msg" id="m">choose your move</div>
+
+<div class="opts">
+  <div class="btn" onclick="play('rock')">Rock</div>
+  <div class="btn" onclick="play('paper')">Paper</div>
+  <div class="btn" onclick="play('scissors')">Scissors</div>
+</div>
+
+<button class="rst" onclick="reset()">New Game</button>
+
+<script>
+let py=0, pc=0;
+const p = document.getElementById('p');
+const c = document.getElementById('c');
+const s = document.getElementById('s');
+const m = document.getElementById('m');
+
+function r(){ return ['rock','paper','scissors'][Math.floor(Math.random()*3)] }
+
+function sym(x){ return x[0].toUpperCase() } 
+
+function play(ch){
+  let bot = r();
+  p.textContent = sym(ch);
+  c.textContent = sym(bot);
+
+  let res = "";
+  if(ch===bot){
+    res = "Tie";
+  }else if(
+    (ch==='rock' && bot==='scissors') ||
+    (ch==='paper' && bot==='rock') ||
+    (ch==='scissors' && bot==='paper')
+  ){
+    res = "You Win";
+    py++;
+  }else{
+    res = "PC Wins";
+    pc++;
+  }
+  m.innerHTML = `<b>${res}</b><br><small>You: ${ch} | PC: ${bot}</small>`;
+  s.textContent = `${py} : ${pc}`;
+}
+
+function reset(){
+  py=pc=0;
+  p.textContent = c.textContent = 'R';
+  s.textContent = '0 : 0';
+  m.textContent = 'choose your move';
+}
+</script>
+
+</body>
+</html>
